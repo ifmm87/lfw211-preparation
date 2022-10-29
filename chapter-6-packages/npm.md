@@ -2,7 +2,7 @@
 
 - Find out how to generate a package.json
 - Understand the difference between production and dev dependencies
-- Grasp?
+- Grasp? SEMVER
 - Package Scripts
 
 a package manager is represented by:
@@ -48,5 +48,16 @@ There is flag in .npmrc package-lock = false/true to change the automatic behavi
 
 npm uses flat strategy, all packages are placed at the top level of node_modules
 
+Dev dependencies : only top level dev dependencies are installed
 
+
+To install just dependencies without any D dependency
+
+```
+npm install --production
+```
+### Semver
+MAJOR.MINOR.PATCH
+^ Is the same as MAJOR.X.X
+~ the same as MAJOR.MINOR.X
 
