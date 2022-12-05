@@ -1,5 +1,5 @@
 'use strict'
-const add = require('../add')
+const { add } = require('./add.js')
 test('throw when inputs are not numbers', async () => {
   expect(() => add('5', '5')).toThrowError(
     Error('inputs must be numbers')

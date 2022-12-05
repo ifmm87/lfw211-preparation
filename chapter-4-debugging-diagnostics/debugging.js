@@ -1,8 +1,7 @@
-function fn(n=99)
-{
-  if(n === 0) throw Error('error');
+function fn(n = 99) {
+  if (n === 0) return 0;
   debugger;
-  fn(n - 1)
+  fn(n - 1);
 }
-fn()
+fn();
 debugger;

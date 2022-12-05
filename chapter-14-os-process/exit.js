@@ -4,7 +4,7 @@ setInterval(() => {
 }, 500);
 setTimeout(() => {
   console.log('exit after this');
-  process.exit();
+  process.exit(2);
 }, 2000);
 
 process.on('exit', (code) => {

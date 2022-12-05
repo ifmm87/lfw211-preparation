@@ -1,19 +1,31 @@
 
-'use strict'
-const { Writable } = require('stream')
-const createWriteStream = (data) => {
-  return new Writable({
-    decodeStrings: false,
-    write (chunk, enc, next) {
-      data.push(chunk)
-      next()
-    }
-  })
+const { Writable } = require('stream');
+const data = [];
+const createWritableStream = (data = []) => {
+    return new Writable({
+      decodeStrings: true,
+      write(chunk, encoding, callback) {
+        data.push(chunk);
+        callback();
+      }
+    })
 }
-const data = []
-const writable = createWriteStream(data)
-writable.on('finish', () => { console.log('finished writing', data) })
-writable.write('A\n')
-writable.write(1)
-writable.end('nothing more to write')
+const wStream = createWritableStream(data);
+// process.stdin.pipe(wStream);
+/* wStream.write('Ivan \n'); */
+/* wStream.write('Fernando \n'); */
+/* wStream.write('Mujica \n'); */
+/* wStream.write('Mmani \n'); */
+/* wStream.end('Last chunk'); */
+process.stdin.on('data', (data) => {
+  // console.log('something is piping', '-'+data.toString() + '-', data.toString() === 'end')
+  if (data.toString() === 'end\n') {
+    wStream.end('last chunk!!');
+  } else {
+    wStream.write(data);
+  }
+})
+wStream.on('finish', () => {
+  console.log('All done', Buffer.concat(data).toString());
+})
 

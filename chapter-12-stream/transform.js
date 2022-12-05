@@ -4,5 +4,5 @@ const transform = createGzip();
 transform.on('data', data => console.log('got gzip data', data.toString('base64')));
 transform.write('first');
 setTimeout(() => {
-  transform.end('second');
+  // transform.end('second');
 }, 500);

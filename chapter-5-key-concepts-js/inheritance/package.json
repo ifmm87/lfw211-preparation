@@ -1,0 +1,12 @@
+{
+  "name": "js-concepts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "prototype-chain-constructor-fn.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

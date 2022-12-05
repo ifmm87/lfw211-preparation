@@ -1,8 +1,8 @@
 function init (type) {
-  var id =0;
+  this.id =0;
   return (name) => {
-    id += 1;
-    return { id, type, name }
+    this.id = this.id + 1;
+    return { id: this.id, type, name }
   }
 }
 

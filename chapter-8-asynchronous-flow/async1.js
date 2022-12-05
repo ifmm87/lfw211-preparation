@@ -1,7 +1,6 @@
-const { readFile } = require('fs').promises;
-
+const { readFile, writeFile } = require('fs').promises;
+const path = require('path');
 const print = contents => console.log(contents.toString());
-const files = Array.from(Array(3)).fill(__filename);
 
 // async function run () {
 //   const data = [];
@@ -11,6 +10,9 @@ const files = Array.from(Array(3)).fill(__filename);
 //   print(Buffer.concat(data));
 // }
   async function run () {
+    const filePath = path.join(__dirname, 'my-file.txt');
+    await writeFile(filePath, 'my content..........');
+    const files = Array.from(Array(3)).fill(filePath);
     const readers = files.map(file => readFile(file));
     const data = await Promise.all(readers);
     print(Buffer.concat(data));

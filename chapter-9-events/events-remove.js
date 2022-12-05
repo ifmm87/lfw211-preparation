@@ -1,41 +1,27 @@
-// const { EventEmitter } = require('events');
-// const ee = new EventEmitter();
-// const listener1 = () => { console.log('listener 1')};
-// const listener2 = () => { console.log('listener 2')};
-// ee.on('my-event', listener1);
-// ee.on('my-event', listener2);
-//
-// setInterval( ()=> {
-//   ee.emit('my-event');
-// }, 500);
-//
-// setTimeout( () => {
-//   ee.removeListener('my-event', listener1)
-// }, 1051);
-// //
-// setTimeout( () => {
-//   ee.removeListener('my-event', listener2)
-// }, 1600);
+const { EventEmitter } = require('events');
 
-const { EventEmitter } = require('events')
-const ee = new EventEmitter()
+const listener1 = () => console.log('listener 1');
+const listener2 = () => console.log('listener 2');
 
-const listener1 = () => { console.log('listener 1') }
-const listener2 = () => { console.log('listener 2') }
+const emitter = new EventEmitter();
+emitter.on('newListener', (eventName, listener) => {
+  console.log('listener added', eventName, listener);
+});
 
-ee.on('my-event', listener1)
-ee.on('my-event', listener2)
-ee.on('another-event', () => { console.log('another event') })
+emitter.on('someEvent', listener1);
+emitter.on('someEvent', listener2);
+emitter.on('removeListener', (eventName, listener) => {
+  console.log('listener removed', eventName, listener);
+});
 
 setInterval(() => {
-  ee.emit('my-event')
-  ee.emit('another-event')
-}, 200)
+  emitter.emit('someEvent');
+}, 500);
 
-// setTimeout(() => {
-//   ee.removeAllListeners('my-event')
-// }, 500)
-//
 setTimeout(() => {
-  ee.removeAllListeners()
-}, 1100)
+  emitter.removeListener('someEvent', listener1);
+}, 2100);
+
+setTimeout(() => {
+  emitter.removeAllListeners();
+}, 5011);

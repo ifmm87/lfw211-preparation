@@ -39,7 +39,9 @@ The default fields in a generated package.json are:
 - author – the package author
 - license – the package license.
 
-The npm init command can be run again in a folder with an existing package.json and any answers supplied will update the package.json. This can be useful when the package has also been initialized as a git project and has had a remote repo added. When run in a git repository, the npm init -y command will read the repositories remote URI from git and add it to package.json.
+The npm init command can be run again in a folder with an existing package.json and any answers supplied will update the package.json. 
+This can be useful when the package has also been initialized as a git project and has had a remote repo added. When run in a git repository,
+the npm init -y command will read the repositories remote URI from git and add it to package.json.
 
 Dependencies field is an object, keys are the dependency namespace,and the value the semver range version
 
