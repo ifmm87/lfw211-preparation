@@ -1,12 +1,21 @@
+class OddError extends Error {
+  constructor (varName = '') {
+    super(varName + ' must be even')
+    this.code = 'ODD_ERR';
+  }
+  get name () { return 'OddError' }
+}
+
+
 try {
-  const result = doTask('a')
+  const result = doTask(0)
   console.log('result', result)
 } catch (err) {
   if (err instanceof TypeError) {
     console.error('wrong type')
   } else if (err instanceof RangeError) {
     console.error('out of range')
-  } else if (err instanceof OddError) {
+  } else if (err.name === 'OddError' ) {
     console.error('cannot be odd')
   } else {
     console.error('Unknown error', err)

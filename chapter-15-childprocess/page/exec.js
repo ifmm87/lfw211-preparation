@@ -1,8 +1,7 @@
 const { exec } = require('child_process')
 
-exec(`node -p "fs.readdir('.', (err, data) => console.log(data))"`, (err, stdout, stderr) => {
-  if(err) {
-    console.log('errr', err , stderr)
-  }
+exec(`node -e "console.log('helloooo')"`, (err, stdout, stderr) => {
+  console.log(err)
   console.log(stdout)
+  console.log(stderr)
 })

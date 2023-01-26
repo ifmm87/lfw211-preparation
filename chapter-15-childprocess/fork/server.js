@@ -1,8 +1,9 @@
-const { fork } = require('child_process')
-const forked = fork('child.js');
-forked.on('message', (message) => {
-  console.log('message from child', message)
-})
+const { fork } = require('child_process');
 
-forked.send('initiate child process');
-forked.on('error forking', error => console.log(error))
+const forked = fork('./child.js');
+
+forked.send('hi there child')
+forked.on('message', (data) => {
+  if(data.end) forked.kill();
+  console.log(data);
+})

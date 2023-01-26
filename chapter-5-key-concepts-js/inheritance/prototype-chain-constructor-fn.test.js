@@ -18,6 +18,6 @@ describe('testing Cocinero prototype', () => {
     // Object.prototype.hasOwnProperty.call(cocinero, 'run')
   });
   test('persona is prototype of cocinero', () => {
-    expect(Persona.prototype.isPrototypeOf(cocinero)).toBe(true)
+    expect(Object.getPrototypeOf(cocinero) === Cocinero.prototype).toBe(true)
   })
 });

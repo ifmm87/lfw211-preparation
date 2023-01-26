@@ -1,0 +1,14 @@
+{
+  "name": "is-prime",
+  "version": "1.0.0",
+  "description": "verifies if a given number is prime",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "prime"
+  ],
+  "author": "Ivan Mujica",
+  "license": "MIT"
+}

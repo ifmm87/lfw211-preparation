@@ -11,7 +11,8 @@
 // }, 3250)
 
 const net = require('net');
-const { Transform, pipeline } = require('stream');
+const { Transform } = require('stream');
+const { pipeline } = require('stream/promises');
 const { scrypt } = require('crypto');
 const createTransformStream = () => {
   return new Transform({
@@ -28,10 +29,14 @@ const createTransformStream = () => {
 
 net.createServer(socket => {
   const transform = createTransformStream();
-  const interval = setInterval( _ => socket.write('beat'), 1000);
-  pipeline(socket, transform, socket, (err) => {
+  const interval = setInterval( _ => socket.write('beat \n'), 1000);
+  pipeline(socket, transform, socket)
+    .then(value => { 
+      console.log('value returned', value)
+      clearInterval(interval);
+    })
+    .catch((err) => {
     if (err) { console.error ('error', err)}
-    clearInterval(interval);
-  });
+    });
 
 }).listen(3000);

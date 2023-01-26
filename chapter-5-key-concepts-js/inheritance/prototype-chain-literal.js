@@ -1,4 +1,4 @@
-'use strict'
+// 'use strict'
 const cheff = {
   type: 'Basic food',
   cook: function (meal) {
@@ -12,14 +12,18 @@ const ivan = {
   profession: 'Developer',
 
 };
-
 Object.setPrototypeOf(ivan, cheff)
+
 cheff.cortar = () => {
   console.log('cortando alguna cosa', this)
 }
-ivan.cook('sajta');
+cheff.another = () => {
+  console.log('another ivan');
+}
+/* ivan.cook('sajta'); */
 ivan.cortar()
-console.log(ivan)
+ivan.another()
+/* console.log(ivan) */
 
 module.exports = { ivan, cheff }
 

@@ -12,20 +12,29 @@ const { Writable, Readable } = require('stream');
 //
 // fileStream.on('data', (data) => { console.log(data.toString())})
 // fileStream.on('end', () => console.log('ending reading'));
-
-const createWriteStream = (data) => {
-  return new Writable({
-    write (chunk, enc, next) {
-      data.push(chunk);
-      next();
-    }
-  })
-}
+ process.on('uncaughtException', (err) => { 
+  console.log('uncaughtException - Catch event error:', err);
+  // process.stdin.resume()
+});
 const data = [];
-const writable = createWriteStream(data);
-writable.on('finish', () => { console.log('finished writing', Buffer.concat(data).toString()) })
-writable.write('A\n')
-writable.write('B\n')
-writable.write('C\n')
-writable.end('nothing more to write')
+const wStream = new Writable({
+  write(chunk, enc, done) {
+    console.log(chunk.toString())
+    data.push(chunk);
+    done();
+  }
+});
 
+wStream.write('Hello')
+wStream.write('World')
+// wStream.end('end!!')
+wStream.destroy(new Error('some error'));
+
+wStream.on('error', console.error);
+wStream.on('finish', () => console.log(this))
+wStream.on('drain', () => console.log('drain event'))
+wStream.on('pipe', () => console.log('pipe event'))
+
+process.stdin.pipe(wStream);
+
+wStream.write('World')

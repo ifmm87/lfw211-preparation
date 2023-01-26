@@ -1,14 +1,29 @@
 const { readFile } = require('fs');
-const { promisify } = require('util');
-const readFilePromise = promisify(readFile);
-const actualReadFilePromise = readFilePromise(__filename);
 
-actualReadFilePromise
-  .then((data) => console.log(data.toString()))
-  .then(() => {
-    console.log('finished!!')
-  });
+function promisify(fn) {
+  return function (...args) {
+    return new Promise((resolve, reject) => {
+      function callback(err, result) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      }
+      args.push(callback);
+      fn.call(this, ...args);
+    })
+  }
+}
 
-// readFile(__filename, (err, data) => {
-//   console.log(data.toString());
-// });
+async function run() {
+  const readFilePromise = promisify(readFile);
+  try {
+    const result =  await readFilePromise('./my-file.txt', 'utf-8');
+    console.log('the result', result)
+  } catch(error) {
+    console.log(error)
+  }
+}
+run();
+

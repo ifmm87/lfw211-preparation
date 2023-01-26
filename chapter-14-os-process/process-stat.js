@@ -7,10 +7,14 @@ const outputStats = () => {
 
 outputStats()
 
-setTimeout(() => {
-  outputStats()
-  const now = Date.now()
-  // make the CPU do some work:
-  while (Date.now() - now < 5000) {}
-  outputStats()
-}, 500)
+/* setTimeout(() => { */
+/*   outputStats() */
+/*   const now = Date.now() */
+/*   // make the CPU do some work: */
+/*   while (Date.now() - now < 5000) {} */
+/*   outputStats() */
+/* }, 500) */
+
+console.log('arch', process.arch)
+console.log('arch', process.env)
+console.log('execPath', process.execPath)

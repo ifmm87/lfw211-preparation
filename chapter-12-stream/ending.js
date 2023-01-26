@@ -13,5 +13,5 @@ net.createServer(socket => {
     console.log('end')
     clearInterval(interval);
   })
-}).listen(3000, _ => console.log('server is upjjjj'));
+}).listen(3001, _ => console.log('server is upjjjj'));
 

@@ -7,6 +7,9 @@ setTimeout(() => console.log('ever another async op'), 0)
 process.nextTick(() => {
   console.log('async op')
 })
+process.nextTick(() => {
+  console.log('another async')
+})
 console.log('last')
 console.log('last')
 console.log('last')

@@ -12,3 +12,10 @@ class MyEmitter extends EventEmitter {
     this.emit('close');
   }
 }
+
+const ee = new MyEmitter();
+ee.on('event', (something) => {
+  console.log('this was my event', something);
+})
+ee.emit('event', 'hello');
+ee.destroy('errrr')

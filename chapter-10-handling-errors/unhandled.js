@@ -28,7 +28,7 @@ try {
   setTimeout(() => {
     const result = doTask(3)
     console.log('result', result)
-  }, 100)
+  }, 1000)
 } catch (err) {
   if (err.code === 'ERR_AMOUNT_MUST_BE_NUMBER') {
     console.error('wrong type')
