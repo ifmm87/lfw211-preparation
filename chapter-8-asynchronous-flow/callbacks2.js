@@ -17,6 +17,7 @@ const read = (file) => {
     count ++;
     if (err) print(err, null);
     else result.push(contents);
+
     if(count < filesLength) read(files.shift());
     else print(null, Buffer.concat(result));
   })

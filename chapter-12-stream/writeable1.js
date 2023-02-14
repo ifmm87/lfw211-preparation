@@ -28,7 +28,7 @@ const wStream = new Writable({
 wStream.write('Hello')
 wStream.write('World')
 // wStream.end('end!!')
-wStream.destroy(new Error('some error'));
+// wStream.destroy(new Error('some error'));
 
 wStream.on('error', console.error);
 wStream.on('finish', () => console.log(this))

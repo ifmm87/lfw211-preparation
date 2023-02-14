@@ -1,21 +1,19 @@
 'use strict';
-// const { Readable } = require('stream');
-//
-const createReadStream = () => {
-  const data = ['some', 'data', 'to', 'read'];
+const { Readable } = require('stream');
+const arr = ['ivan', 'fernando', 'mujica']
+function createReadStream() {
   return new Readable({
-    objectMode: true, // objectMode : true
-    read () {
-      if (data.length === 0) this.push(null)
-      else this.push(data.shift());
+    read(size) {
+      if(arr.length) this.push(arr.shift())
+      else this.push(null);
     }
-  })
+  });
 }
-const readable = createReadStream();
-readable.on('data', data => console.log('got data', data));
-readable.on('end', data => console.log('finished....'));
-
-
+const stream = createReadStream();
+stream.on('data', (chunk) => {
+  console.log('>>>', chunk.toString())
+})
+stream.on('end', (data) => console.log('this is the',data))
 // const { Readable } = require('stream')
 // const readable = Readable.from(['some', 'data', 'to', 'read'])
 // readable.on('data', (data) => { console.log('got data', data) })

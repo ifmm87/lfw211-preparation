@@ -1,7 +1,7 @@
 const { EventEmitter, errorMonitor } = require('events');
 const eventEmitter = new EventEmitter();
 let m = 0;
-eventEmitter.once('event', () => {
+eventEmitter.on('event', () => {
   console.log(++m);
 });
 eventEmitter.on('event', () => {

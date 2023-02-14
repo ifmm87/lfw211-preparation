@@ -28,6 +28,7 @@ for(const el of buf5) {
 }
 
 console.log('>>>>', buf4.compare(buf6))
+console.log('>>>>', Buffer.compare(buf4, buf6));
 
 const buffTotal = Buffer.concat([buf1, buf2])
 console.log(buffTotal.toString())

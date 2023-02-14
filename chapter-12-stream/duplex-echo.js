@@ -14,4 +14,5 @@ const dstream = new Duplex({
   }
 })
 dstream.charNumber = 64;
+dstream.write('hello')
 dstream.pipe(process.stdout)

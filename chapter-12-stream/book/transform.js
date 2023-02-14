@@ -8,7 +8,6 @@ const tstream = new Transform({
     done(null, chunk.toString().toUpperCase())
   }
 })
-
 // process.stdin.pipe(tstream).pipe(process.stdout)
 tstream.on('data', (chunk) => {
   console.log('>>>>>', chunk)

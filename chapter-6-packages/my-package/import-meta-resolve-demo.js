@@ -7,7 +7,7 @@ console.log(
 )
 
 console.log(
-  `import 'tap'`,
+  `import 'tap' ${import.meta.url}`,
   '=>',
   await resolve('tap', import.meta.url)
 )

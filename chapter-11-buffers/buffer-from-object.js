@@ -12,6 +12,9 @@ const buffer = Buffer.alloc(10, 9);
 const length = buffer.write('abcd', 3);
 console.log(buffer)
 console.log(`${length} bytes: ${buffer.toString('utf8', 8, 10)}`);
-// for(let i of buff2){
-//   console.log(i);
-// }
+console.group('buffer 2')
+for(let i of buff2){
+  console.log(i.toString());
+}
+
+// 
